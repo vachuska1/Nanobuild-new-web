@@ -61,12 +61,12 @@ export function Navbar() {
                   />
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent>
+              <DropdownMenuContent className="w-auto min-w-0">
                 {languages.map((lang) => (
                   <DropdownMenuItem
                     key={lang.code}
                     onClick={() => setLanguage(lang.code as any)}
-                    className={`flex items-center space-x-2 ${language === lang.code ? "bg-cyan-50" : ""}`}
+                    className={`flex items-center justify-center p-2 w-10 h-8 ${language === lang.code ? "bg-cyan-50" : ""}`}
                   >
                     <Image
                       src={lang.flag || "/placeholder.svg"}
@@ -118,12 +118,12 @@ export function Navbar() {
                       />
                     </Button>
                   </DropdownMenuTrigger>
-                  <DropdownMenuContent>
+                  <DropdownMenuContent className="w-auto min-w-0">
                     {languages.map((lang) => (
                       <DropdownMenuItem
                         key={lang.code}
                         onClick={() => setLanguage(lang.code as any)}
-                        className={`flex items-center space-x-2 ${language === lang.code ? "bg-cyan-50" : ""}`}
+                        className={`flex items-center justify-center p-2 w-10 h-8 ${language === lang.code ? "bg-cyan-50" : ""}`}
                       >
                         <Image
                           src={lang.flag || "/placeholder.svg"}
