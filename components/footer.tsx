@@ -11,7 +11,7 @@ export function Footer() {
   return (
     <footer className="bg-gray-900 text-white">
       {/* Contact Section */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div id="contact-form" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold font-orbitron gradient-text mb-4">{t("contactTitle")}</h2>
         </div>
@@ -36,7 +36,7 @@ export function Footer() {
                 </div>
                 <div className="flex items-center space-x-3">
                   <MapPin className="h-5 w-5 text-cyan-400" />
-                  <span>Czech Republic</span>
+                  <span>{t("czechRepublic")}</span>
                 </div>
                 <div className="text-sm text-gray-400">IČO: 17731691</div>
               </div>
@@ -44,8 +44,8 @@ export function Footer() {
 
             {/* Map */}
             <div>
-              <h4 className="text-lg font-semibold font-orbitron mb-4">Address</h4>
-              <p className="text-gray-300 mb-4">{t("address")}</p>
+              <h4 className="text-lg font-semibold font-orbitron mb-4">{t("addressLabel")}</h4>
+              <p className="text-gray-300 mb-4">{t("addressFull")}</p>
               <div className="bg-gray-800 rounded-lg p-4 h-64 flex items-center justify-center">
                 <iframe
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2560.1234567890123!2d14.4378!3d50.0755!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNTDCsDA0JzMxLjgiTiAxNMKwMjYnMTYuMSJF!5e0!3m2!1sen!2scz!4v1234567890123"

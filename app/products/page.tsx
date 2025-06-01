@@ -12,32 +12,31 @@ export default function ProductsPage() {
 
   const products = [
     {
-      name: "2DD-OL",
-      title: "Dispersion of Few-Layer Graphene in Industrial Oil",
-      description:
-        "Designed for modification of organic and organosilicon compounds, enhancing thermal and electrical conductivity.",
-      specs: ["3 wt.% graphene concentration", "10-30 μm particle size", "≥98% carbon content"],
+      name: t("product2DDOL"),
+      title: t("product2DDOLTitle"),
+      description: t("product2DDOLDesc"),
+      specs: [t("product2DDOLSpec1"), t("product2DDOLSpec2"), t("product2DDOLSpec3")],
       icon: Atom,
     },
     {
-      name: "2D-2R",
-      title: "Surface Treatment Material",
-      description: "Electromagnetic radiation protection material absorbing up to 98% of radiation at 2-3mm thickness.",
-      specs: ["Operating temp up to 8000°C", "3-110 GHz frequency range", "Up to 24 months shelf life"],
+      name: t("product2D2R"),
+      title: t("product2D2RTitle"),
+      description: t("product2D2RDesc"),
+      specs: [t("product2D2RSpec1"), t("product2D2RSpec2"), t("product2D2RSpec3")],
       icon: Shield,
     },
     {
-      name: "2DD-WPE",
-      title: "Water-Polymer Dispersion",
-      description: "Enhances electrical conductivity of mineral fibers and improves anti-corrosion properties.",
-      specs: ["2 wt.% graphene concentration", "Water-soluble polymer medium", "High adhesion to fibers"],
+      name: t("product2DDWPE"),
+      title: t("product2DDWPETitle"),
+      description: t("product2DDWPEDesc"),
+      specs: [t("product2DDWPESpec1"), t("product2DDWPESpec2"), t("product2DDWPESpec3")],
       icon: Layers,
     },
     {
-      name: "2DD-W",
-      title: "Aqueous Dispersion",
-      description: "Acts as matrix strength activator for electromagnetic wave absorption and structural applications.",
-      specs: ["4 wt.% graphene concentration", "Water-based medium", "Up to 7.2% concentration available"],
+      name: t("product2DDW"),
+      title: t("product2DDWTitle"),
+      description: t("product2DDWDesc"),
+      specs: [t("product2DDWSpec1"), t("product2DDWSpec2"), t("product2DDWSpec3")],
       icon: Atom,
     },
   ]
@@ -48,10 +47,7 @@ export default function ProductsPage() {
         {/* Header */}
         <div className="text-center mb-16">
           <h1 className="text-5xl font-bold font-orbitron mb-6 gradient-text">{t("products")}</h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Discover our comprehensive range of graphene-based products designed for cutting-edge applications across
-            various industries.
-          </p>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">{t("productsPageText")}</p>
         </div>
 
         {/* Products Grid */}
@@ -81,7 +77,7 @@ export default function ProductsPage() {
                   </div>
                   <Link href="/downloads">
                     <Button className="w-full bg-cyan-600 hover:bg-cyan-700 font-orbitron">
-                      Download Technical Data Sheet
+                      {t("downloadTechnical")}
                     </Button>
                   </Link>
                 </CardContent>
@@ -94,44 +90,42 @@ export default function ProductsPage() {
         <section className="py-20 bg-gray-50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
-              <h2 className="text-4xl font-bold font-orbitron mb-6 gradient-text">Applications</h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-                Our graphene dispersions enable breakthrough solutions across multiple industries.
-              </p>
+              <h2 className="text-4xl font-bold font-orbitron mb-6 gradient-text">{t("applicationsTitle")}</h2>
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">{t("applicationsText")}</p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {[
                 {
-                  title: "Concrete, Mortars, Building Mixes",
+                  title: t("appConcrete"),
                   slug: "concrete-mortars-building-mixes",
                 },
                 {
-                  title: "Plastics, Polymers, Paints, Protective Coatings",
+                  title: t("appPlastics"),
                   slug: "plastics-polymers-paints-protective-coatings",
                 },
                 {
-                  title: "Powder Metallurgy and Metallurgy of Light and Non-Ferrous Alloys",
+                  title: t("appMetallurgy"),
                   slug: "powder-metallurgy-light-non-ferrous-alloys",
                 },
                 {
-                  title: "Energy Saving Technologies and New Ways of Electricity Production",
+                  title: t("appEnergy"),
                   slug: "energy-saving-technologies-electricity-production",
                 },
                 {
-                  title: "Environmental Protection",
+                  title: t("appEnvironment"),
                   slug: "environmental-protection",
                 },
                 {
-                  title: "Composite Materials",
+                  title: t("appComposite"),
                   slug: "composite-materials",
                 },
                 {
-                  title: "Wear-Resistant Rubber and Other Elastomers",
+                  title: t("appRubber"),
                   slug: "wear-resistant-rubber-elastomers",
                 },
                 {
-                  title: "Lubricants, Technical Fluids",
+                  title: t("appLubricants"),
                   slug: "lubricants-technical-fluids",
                 },
               ].map((application, index) => (
@@ -156,7 +150,7 @@ export default function ProductsPage() {
                   }
                 }}
               >
-                Discuss Your Application
+                {t("discussApplication")}
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
             </div>

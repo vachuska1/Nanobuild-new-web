@@ -31,7 +31,7 @@ export function ContactForm() {
     if (!formData.consent) {
       setResult({
         success: false,
-        message: "Please agree to the processing of personal data.",
+        message: t("agreeConsent"),
       })
       return
     }
@@ -146,9 +146,9 @@ export function ContactForm() {
             disabled={isPending}
           />
           <label htmlFor="consent" className="text-sm text-gray-300">
-            I agree to the{" "}
+            {t("iAgreeTo")}{" "}
             <Link href="/privacy" className="text-cyan-400 hover:text-cyan-300 underline">
-              processing of personal data
+              {t("processingPersonalData")}
             </Link>
           </label>
         </div>
@@ -179,7 +179,7 @@ export function ContactForm() {
           {isPending ? (
             <>
               <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-              Sending...
+              {t("sending")}
             </>
           ) : (
             t("sendMessage")

@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect, useMemo } from "react"
 import { useLanguage } from "@/components/language-provider"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
@@ -10,60 +10,70 @@ import { Calendar, User, ArrowRight } from "lucide-react"
 export default function NewsPage() {
   const { t } = useLanguage()
 
-  // Mock news data - in a real app, this would come from a CMS or database
-  const [news] = useState([
-    {
-      id: 1,
-      title: "NANOBUILD Announces Breakthrough in Graphene Dispersion Technology",
-      excerpt:
-        "Our latest research has led to a significant improvement in graphene dispersion stability and performance.",
-      content: "Full article content would go here...",
-      author: "Dr. Pavel Novák",
-      date: "2025-01-15",
-      category: "Research",
-      image: "/images/graphene-1.png",
-      featured: true,
-    },
-    {
-      id: 2,
-      title: "Partnership with Leading Electronics Manufacturer",
-      excerpt: "NANOBUILD partners with major electronics company to develop next-generation conductive materials.",
-      content: "Full article content would go here...",
-      author: "Marketing Team",
-      date: "2025-01-10",
-      category: "Business",
-      image: "/images/graphene-2.png",
-      featured: false,
-    },
-    {
-      id: 3,
-      title: "New Production Facility Opens in Prague",
-      excerpt: "Expansion of our manufacturing capabilities with state-of-the-art equipment and increased capacity.",
-      content: "Full article content would go here...",
-      author: "Operations Team",
-      date: "2025-01-05",
-      category: "Company",
-      image: "/placeholder.svg?height=200&width=300",
-      featured: false,
-    },
-    {
-      id: 4,
-      title: "Sustainable Graphene Production Methods",
-      excerpt: "Our commitment to environmental responsibility through innovative green production techniques.",
-      content: "Full article content would go here...",
-      author: "Dr. Marie Svobodová",
-      date: "2024-12-28",
-      category: "Sustainability",
-      image: "/placeholder.svg?height=200&width=300",
-      featured: false,
-    },
-  ])
+  // Použij useMemo pro články, aby se aktualizovaly při změně jazyka
+  const news = useMemo(
+    () => [
+      {
+        id: 1,
+        title: t("newsArticle1Title"),
+        excerpt: t("newsArticle1Excerpt"),
+        content: "Full article content would go here...",
+        author: t("newsArticle1Author"),
+        date: "2025-01-15",
+        category: t("research"),
+        image: "/images/graphene-1.png",
+        featured: true,
+      },
+      {
+        id: 2,
+        title: t("newsArticle2Title"),
+        excerpt: t("newsArticle2Excerpt"),
+        content: "Full article content would go here...",
+        author: t("newsArticle2Author"),
+        date: "2025-01-10",
+        category: t("business"),
+        image: "/images/graphene-2.png",
+        featured: false,
+      },
+      {
+        id: 3,
+        title: t("newsArticle3Title"),
+        excerpt: t("newsArticle3Excerpt"),
+        content: "Full article content would go here...",
+        author: t("newsArticle3Author"),
+        date: "2025-01-05",
+        category: t("company"),
+        image: "/placeholder.svg?height=200&width=300",
+        featured: false,
+      },
+      {
+        id: 4,
+        title: t("newsArticle4Title"),
+        excerpt: t("newsArticle4Excerpt"),
+        content: "Full article content would go here...",
+        author: t("newsArticle4Author"),
+        date: "2024-12-28",
+        category: t("sustainability"),
+        image: "/placeholder.svg?height=200&width=300",
+        featured: false,
+      },
+    ],
+    [t],
+  )
 
-  const categories = ["All", "Research", "Business", "Company", "Sustainability"]
-  const [selectedCategory, setSelectedCategory] = useState("All")
+  const [selectedCategory, setSelectedCategory] = useState("")
 
-  const filteredNews =
-    selectedCategory === "All" ? news : news.filter((article) => article.category === selectedCategory)
+  // Použij useMemo pro kategorie, aby se aktualizovaly při změně jazyka
+  const categories = useMemo(() => [t("all"), t("research"), t("business"), t("company"), t("sustainability")], [t])
+
+  // Nastav výchozí kategorii při změně jazyka
+  useEffect(() => {
+    setSelectedCategory(t("all"))
+  }, [t])
+
+  const filteredNews = useMemo(() => {
+    return selectedCategory === t("all") ? news : news.filter((article) => article.category === selectedCategory)
+  }, [news, selectedCategory, t])
 
   const formatDate = (dateString: string) => {
     return new Date(dateString).toLocaleDateString("en-US", {
@@ -79,9 +89,7 @@ export default function NewsPage() {
         {/* Header */}
         <div className="text-center mb-16">
           <h1 className="text-5xl font-bold font-orbitron mb-6 gradient-text">{t("news")}</h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Stay updated with the latest developments, research breakthroughs, and company news from NANOBUILD.
-          </p>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">{t("newsText")}</p>
         </div>
 
         {/* Category Filter */}
@@ -103,7 +111,7 @@ export default function NewsPage() {
         {/* Featured Article */}
         {filteredNews.find((article) => article.featured) && (
           <div className="mb-16">
-            <h2 className="text-2xl font-bold font-orbitron mb-8 text-center">Featured Article</h2>
+            <h2 className="text-2xl font-bold font-orbitron mb-8 text-center">{t("featuredArticle")}</h2>
             {(() => {
               const featured = filteredNews.find((article) => article.featured)!
               return (
@@ -132,7 +140,7 @@ export default function NewsPage() {
                           {featured.author}
                         </div>
                         <Button className="bg-cyan-600 hover:bg-cyan-700 font-orbitron">
-                          Read More
+                          {t("readMore")}
                           <ArrowRight className="h-4 w-4 ml-2" />
                         </Button>
                       </div>
@@ -177,7 +185,7 @@ export default function NewsPage() {
                       {article.author}
                     </div>
                     <Button size="sm" variant="ghost" className="font-orbitron text-cyan-600 hover:text-cyan-700">
-                      Read More
+                      {t("readMore")}
                       <ArrowRight className="h-3 w-3 ml-1" />
                     </Button>
                   </div>
@@ -188,12 +196,10 @@ export default function NewsPage() {
 
         {/* Newsletter Signup */}
         <div className="mt-16 bg-gradient-to-r from-cyan-50 to-blue-50 rounded-2xl p-8 text-center">
-          <h2 className="text-2xl font-bold font-orbitron mb-4 gradient-text">Stay Updated</h2>
-          <p className="text-gray-600 mb-6">
-            Subscribe to our newsletter to receive the latest news and updates directly in your inbox.
-          </p>
+          <h2 className="text-2xl font-bold font-orbitron mb-4 gradient-text">{t("stayUpdated")}</h2>
+          <p className="text-gray-600 mb-6">{t("subscribeText")}</p>
           <Button size="lg" className="bg-cyan-600 hover:bg-cyan-700 font-orbitron">
-            Subscribe to Newsletter
+            {t("subscribeNewsletter")}
           </Button>
         </div>
       </div>

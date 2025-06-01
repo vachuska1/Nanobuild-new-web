@@ -12,10 +12,9 @@ export default function DownloadsPage() {
   const downloads = [
     {
       id: 1,
-      title: "2DD-OL - Dispersion of Few-Layer Graphene in Industrial Oil",
-      description:
-        "Technical data sheet for graphene dispersion in industrial oil for composite materials and powder metallurgy",
-      type: "PDF",
+      title: t("download2DDOL"),
+      description: t("download2DDOLDesc"),
+      type: t("type"),
       size: "0.2 MB",
       icon: FileText,
       downloadUrl:
@@ -24,9 +23,9 @@ export default function DownloadsPage() {
     },
     {
       id: 2,
-      title: "2D-2R - Surface Treatment Material",
-      description: "Electromagnetic radiation protection material operating at temperatures up to 8000°C",
-      type: "PDF",
+      title: t("download2D2R"),
+      description: t("download2D2RDesc"),
+      type: t("type"),
       size: "0.2 MB",
       icon: FileText,
       downloadUrl:
@@ -35,10 +34,9 @@ export default function DownloadsPage() {
     },
     {
       id: 3,
-      title: "2DD-WPE - Water-Polymer Dispersion of Few-Layer Graphene",
-      description:
-        "Aqueous dispersion for enhancing electrical conductivity and anti-corrosion properties of mineral fibers",
-      type: "PDF",
+      title: t("download2DDWPE"),
+      description: t("download2DDWPEDesc"),
+      type: t("type"),
       size: "0.2 MB",
       icon: FileText,
       downloadUrl:
@@ -47,9 +45,9 @@ export default function DownloadsPage() {
     },
     {
       id: 4,
-      title: "2DD-W - Aqueous Dispersion of Few-Layer Graphene",
-      description: "Water-based graphene suspension for electromagnetic wave absorption and structural applications",
-      type: "PDF",
+      title: t("download2DDW"),
+      description: t("download2DDWDesc"),
+      type: t("type"),
       size: "0.2 MB",
       icon: FileText,
       downloadUrl:
@@ -80,10 +78,8 @@ export default function DownloadsPage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16">
-          <h1 className="text-5xl font-bold font-orbitron mb-6 gradient-text">{t("downloads")}</h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Access our comprehensive library of technical documents, product catalogs, and educational materials.
-          </p>
+          <h1 className="text-5xl font-bold font-orbitron mb-6 gradient-text">{t("downloadsTitle")}</h1>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">{t("downloadsText")}</p>
         </div>
 
         {/* Downloads Grid */}
@@ -98,7 +94,7 @@ export default function DownloadsPage() {
                       <IconComponent className="h-6 w-6 text-cyan-600" />
                     </div>
                     <div className="text-right">
-                      <div className="text-sm font-semibold text-cyan-600">{item.type}</div>
+                      <div className="text-sm font-semibold text-cyan-600">PDF</div>
                       <div className="text-xs text-gray-500">{item.size}</div>
                     </div>
                   </div>
@@ -111,7 +107,7 @@ export default function DownloadsPage() {
                     onClick={() => handleDownload(item.downloadUrl, item.filename)}
                   >
                     <Download className="h-4 w-4 mr-2" />
-                    Download
+                    {t("download")}
                   </Button>
                 </CardContent>
               </Card>
@@ -123,44 +119,42 @@ export default function DownloadsPage() {
         <section className="py-20 mt-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
-              <h2 className="text-4xl font-bold font-orbitron mb-6 gradient-text">Applications</h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-                Our graphene dispersions enable breakthrough solutions across multiple industries.
-              </p>
+              <h2 className="text-4xl font-bold font-orbitron mb-6 gradient-text">{t("applicationsTitle")}</h2>
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">{t("applicationsText")}</p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {[
                 {
-                  title: "Concrete, Mortars, Building Mixes",
+                  title: t("appConcrete"),
                   slug: "concrete-mortars-building-mixes",
                 },
                 {
-                  title: "Plastics, Polymers, Paints, Protective Coatings",
+                  title: t("appPlastics"),
                   slug: "plastics-polymers-paints-protective-coatings",
                 },
                 {
-                  title: "Powder Metallurgy and Metallurgy of Light and Non-Ferrous Alloys",
+                  title: t("appMetallurgy"),
                   slug: "powder-metallurgy-light-non-ferrous-alloys",
                 },
                 {
-                  title: "Energy Saving Technologies and New Ways of Electricity Production",
+                  title: t("appEnergy"),
                   slug: "energy-saving-technologies-electricity-production",
                 },
                 {
-                  title: "Environmental Protection",
+                  title: t("appEnvironment"),
                   slug: "environmental-protection",
                 },
                 {
-                  title: "Composite Materials",
+                  title: t("appComposite"),
                   slug: "composite-materials",
                 },
                 {
-                  title: "Wear-Resistant Rubber and Other Elastomers",
+                  title: t("appRubber"),
                   slug: "wear-resistant-rubber-elastomers",
                 },
                 {
-                  title: "Lubricants, Technical Fluids",
+                  title: t("appLubricants"),
                   slug: "lubricants-technical-fluids",
                 },
               ].map((application, index) => (
@@ -185,7 +179,7 @@ export default function DownloadsPage() {
                   }
                 }}
               >
-                Discuss Your Application
+                {t("discussApplication")}
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
             </div>
@@ -195,11 +189,8 @@ export default function DownloadsPage() {
         {/* Additional Information */}
         <div className="mt-16 bg-gray-50 rounded-2xl p-8">
           <div className="text-center">
-            <h2 className="text-2xl font-bold font-orbitron mb-4 gradient-text">Need Additional Information?</h2>
-            <p className="text-gray-600 mb-6">
-              Can't find what you're looking for? Contact our technical team for custom documentation or specific
-              product information.
-            </p>
+            <h2 className="text-2xl font-bold font-orbitron mb-4 gradient-text">{t("needAdditional")}</h2>
+            <p className="text-gray-600 mb-6">{t("cantFind")}</p>
             <Button
               size="lg"
               className="bg-cyan-600 hover:bg-cyan-700 font-orbitron"
@@ -210,7 +201,7 @@ export default function DownloadsPage() {
                 }
               }}
             >
-              Contact Technical Support
+              {t("contactTechnical")}
             </Button>
           </div>
         </div>
