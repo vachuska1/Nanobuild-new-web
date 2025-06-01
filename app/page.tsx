@@ -1,5 +1,6 @@
 "use client"
 
+import { useEffect } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
@@ -11,11 +12,31 @@ export default function HomePage() {
   const { t } = useLanguage()
 
   const scrollToContact = () => {
-    const footer = document.querySelector("footer")
-    if (footer) {
-      footer.scrollIntoView({ behavior: "smooth" })
+    try {
+      const footer = document.querySelector("footer")
+      if (footer) {
+        footer.scrollIntoView({ behavior: "smooth" })
+      }
+    } catch (error) {
+      console.error("Scroll to contact failed:", error)
     }
   }
+
+  const scrollToTechnology = () => {
+    try {
+      const technologySection = document.getElementById("technology-section")
+      if (technologySection) {
+        technologySection.scrollIntoView({ behavior: "smooth" })
+      }
+    } catch (error) {
+      console.error("Scroll to technology failed:", error)
+    }
+  }
+
+  // Ensure DOM is ready before adding event listeners
+  useEffect(() => {
+    // Add any additional initialization if needed
+  }, [])
 
   const products = [
     {
@@ -100,7 +121,7 @@ export default function HomePage() {
                 <Button
                   size="lg"
                   className="bg-cyan-600 hover:bg-cyan-700 text-white font-orbitron"
-                  onClick={() => document.getElementById("technology-section")?.scrollIntoView({ behavior: "smooth" })}
+                  onClick={scrollToTechnology}
                 >
                   {t("learnMore")}
                   <ArrowRight className="ml-2 h-5 w-5" />
@@ -109,12 +130,7 @@ export default function HomePage() {
                   size="lg"
                   variant="outline"
                   className="font-orbitron border-gray-300 hover:border-cyan-600"
-                  onClick={() => {
-                    const footer = document.querySelector("footer")
-                    if (footer) {
-                      footer.scrollIntoView({ behavior: "smooth" })
-                    }
-                  }}
+                  onClick={scrollToContact}
                 >
                   {t("contact")}
                 </Button>
