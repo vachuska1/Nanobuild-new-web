@@ -3,6 +3,7 @@
 import type React from "react"
 
 import { useState } from "react"
+import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
@@ -106,7 +107,10 @@ export function ContactForm() {
             className="border-gray-600"
           />
           <label htmlFor="consent" className="text-sm text-gray-300">
-            {t("consent")}
+            I agree to the{" "}
+            <Link href="/privacy" className="text-cyan-400 hover:text-cyan-300 underline">
+              processing of personal data
+            </Link>
           </label>
         </div>
 

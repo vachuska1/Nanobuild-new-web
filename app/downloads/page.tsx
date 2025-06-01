@@ -3,7 +3,8 @@
 import { useLanguage } from "@/components/language-provider"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Download, FileText } from "lucide-react"
+import { Download, FileText, ArrowRight } from "lucide-react"
+import Link from "next/link"
 
 export default function DownloadsPage() {
   const { t } = useLanguage()
@@ -14,45 +15,49 @@ export default function DownloadsPage() {
       title: "2DD-OL - Dispersion of Few-Layer Graphene in Industrial Oil",
       description:
         "Technical data sheet for graphene dispersion in industrial oil for composite materials and powder metallurgy",
-      type: "DOCX",
-      size: "1.2 MB",
+      type: "PDF",
+      size: "0.2 MB",
       icon: FileText,
-      downloadUrl: "#",
+      downloadUrl: "/downloads/2DD-OL.pdf",
     },
     {
       id: 2,
       title: "2D-2R - Surface Treatment Material",
       description: "Electromagnetic radiation protection material operating at temperatures up to 8000°C",
-      type: "DOCX",
-      size: "1.4 MB",
+      type: "PDF",
+      size: "0.2 MB",
       icon: FileText,
-      downloadUrl: "#",
+      downloadUrl: "/downloads/2D-2R.pdf",
     },
     {
       id: 3,
       title: "2DD-WPE - Water-Polymer Dispersion of Few-Layer Graphene",
       description:
         "Aqueous dispersion for enhancing electrical conductivity and anti-corrosion properties of mineral fibers",
-      type: "DOCX",
-      size: "1.1 MB",
+      type: "PDF",
+      size: "0.2 MB",
       icon: FileText,
-      downloadUrl: "#",
+      downloadUrl: "/downloads/2DD-WPE.pdf",
     },
     {
       id: 4,
       title: "2DD-W - Aqueous Dispersion of Few-Layer Graphene",
       description: "Water-based graphene suspension for electromagnetic wave absorption and structural applications",
-      type: "DOCX",
-      size: "1.3 MB",
+      type: "PDF",
+      size: "0.2 MB",
       icon: FileText,
-      downloadUrl: "#",
+      downloadUrl: "/downloads/2DD-W.pdf",
     },
   ]
 
   const handleDownload = (downloadUrl: string, title: string) => {
-    // In a real application, this would trigger the actual download
-    console.log(`Downloading: ${title}`)
-    // window.open(downloadUrl, '_blank')
+    // Create an anchor element and trigger the download
+    const link = document.createElement("a")
+    link.href = downloadUrl
+    link.download = title.replace(/\s+/g, "-").toLowerCase() + ".pdf"
+    document.body.appendChild(link)
+    link.click()
+    document.body.removeChild(link)
   }
 
   return (
@@ -99,6 +104,79 @@ export default function DownloadsPage() {
           })}
         </div>
 
+        {/* Applications Section */}
+        <section className="py-20 mt-16">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl font-bold font-orbitron mb-6 gradient-text">Applications</h2>
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                Our graphene dispersions enable breakthrough solutions across multiple industries.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {[
+                {
+                  title: "Concrete, Mortars, Building Mixes",
+                  slug: "concrete-mortars-building-mixes",
+                },
+                {
+                  title: "Plastics, Polymers, Paints, Protective Coatings",
+                  slug: "plastics-polymers-paints-protective-coatings",
+                },
+                {
+                  title: "Powder Metallurgy and Metallurgy of Light and Non-Ferrous Alloys",
+                  slug: "powder-metallurgy-light-non-ferrous-alloys",
+                },
+                {
+                  title: "Energy Saving Technologies and New Ways of Electricity Production",
+                  slug: "energy-saving-technologies-electricity-production",
+                },
+                {
+                  title: "Environmental Protection",
+                  slug: "environmental-protection",
+                },
+                {
+                  title: "Composite Materials",
+                  slug: "composite-materials",
+                },
+                {
+                  title: "Wear-Resistant Rubber and Other Elastomers",
+                  slug: "wear-resistant-rubber-elastomers",
+                },
+                {
+                  title: "Lubricants, Technical Fluids",
+                  slug: "lubricants-technical-fluids",
+                },
+              ].map((application, index) => (
+                <Link key={index} href={`/applications/${application.slug}`}>
+                  <div className="bg-white rounded-lg p-6 text-center hover:shadow-lg transition-shadow cursor-pointer group h-32 flex items-center justify-center">
+                    <h3 className="font-semibold font-orbitron text-gray-900 group-hover:text-cyan-600 transition-colors text-sm leading-tight">
+                      {application.title}
+                    </h3>
+                  </div>
+                </Link>
+              ))}
+            </div>
+
+            <div className="text-center mt-12">
+              <Button
+                size="lg"
+                className="bg-cyan-600 hover:bg-cyan-700 text-white font-orbitron"
+                onClick={() => {
+                  const footer = document.querySelector("footer")
+                  if (footer) {
+                    footer.scrollIntoView({ behavior: "smooth" })
+                  }
+                }}
+              >
+                Discuss Your Application
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Button>
+            </div>
+          </div>
+        </section>
+
         {/* Additional Information */}
         <div className="mt-16 bg-gray-50 rounded-2xl p-8">
           <div className="text-center">
@@ -107,7 +185,16 @@ export default function DownloadsPage() {
               Can't find what you're looking for? Contact our technical team for custom documentation or specific
               product information.
             </p>
-            <Button size="lg" className="bg-cyan-600 hover:bg-cyan-700 font-orbitron">
+            <Button
+              size="lg"
+              className="bg-cyan-600 hover:bg-cyan-700 font-orbitron"
+              onClick={() => {
+                const footer = document.querySelector("footer")
+                if (footer) {
+                  footer.scrollIntoView({ behavior: "smooth" })
+                }
+              }}
+            >
               Contact Technical Support
             </Button>
           </div>

@@ -1,7 +1,7 @@
 "use client"
 
 import Link from "next/link"
-import { Linkedin, Phone, Mail } from "lucide-react"
+import { Linkedin, Phone, Mail, MapPin } from "lucide-react"
 import { useLanguage } from "@/components/language-provider"
 import { ContactForm } from "@/components/contact-form"
 
@@ -24,11 +24,19 @@ export function Footer() {
               <div className="space-y-3">
                 <div className="flex items-center space-x-3">
                   <Phone className="h-5 w-5 text-cyan-400" />
-                  <span>+420602305209</span>
+                  <a href="tel:+420602305209" className="hover:text-cyan-400 transition-colors">
+                    +420602305209
+                  </a>
                 </div>
                 <div className="flex items-center space-x-3">
                   <Mail className="h-5 w-5 text-cyan-400" />
-                  <span>nanobuildinfo@gmail.com</span>
+                  <a href="mailto:nanobuildinfo@gmail.com" className="hover:text-cyan-400 transition-colors">
+                    nanobuildinfo@gmail.com
+                  </a>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <MapPin className="h-5 w-5 text-cyan-400" />
+                  <span>Czech Republic</span>
                 </div>
                 <div className="text-sm text-gray-400">IČO: 17731691</div>
               </div>

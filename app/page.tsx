@@ -109,7 +109,12 @@ export default function HomePage() {
                   size="lg"
                   variant="outline"
                   className="font-orbitron border-gray-300 hover:border-cyan-600"
-                  onClick={scrollToContact}
+                  onClick={() => {
+                    const footer = document.querySelector("footer")
+                    if (footer) {
+                      footer.scrollIntoView({ behavior: "smooth" })
+                    }
+                  }}
                 >
                   {t("contact")}
                 </Button>

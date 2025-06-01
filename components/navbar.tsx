@@ -3,7 +3,7 @@
 import { useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
-import { Menu, X, Globe } from "lucide-react"
+import { Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useLanguage } from "@/components/language-provider"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
@@ -13,11 +13,16 @@ export function Navbar() {
   const { language, setLanguage, t } = useLanguage()
 
   const languages = [
-    { code: "en", name: "English" },
-    { code: "cs", name: "Čeština" },
-    { code: "de", name: "Deutsch" },
-    { code: "ru", name: "Русский" },
+    { code: "en", flag: "/images/flags/gb.png" },
+    { code: "cs", flag: "/images/flags/cz.png" },
+    { code: "de", flag: "/images/flags/ger.png" },
+    { code: "ru", flag: "/images/flags/rus.png" },
   ]
+
+  const getCurrentFlag = () => {
+    const currentLang = languages.find((lang) => lang.code === language)
+    return currentLang?.flag || "/images/flags/gb.png"
+  }
 
   return (
     <nav className="bg-white/95 backdrop-blur-sm border-b border-gray-100 sticky top-0 z-50">
@@ -46,9 +51,14 @@ export function Navbar() {
             {/* Language Selector */}
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button variant="ghost" size="sm" className="font-orbitron">
-                  <Globe className="h-4 w-4 mr-2" />
-                  {language.toUpperCase()}
+                <Button variant="ghost" size="sm" className="p-2">
+                  <Image
+                    src={getCurrentFlag() || "/placeholder.svg"}
+                    alt={`${language} flag`}
+                    width={24}
+                    height={16}
+                    className="rounded-sm"
+                  />
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent>
@@ -56,9 +66,15 @@ export function Navbar() {
                   <DropdownMenuItem
                     key={lang.code}
                     onClick={() => setLanguage(lang.code as any)}
-                    className={language === lang.code ? "bg-cyan-50" : ""}
+                    className={`flex items-center space-x-2 ${language === lang.code ? "bg-cyan-50" : ""}`}
                   >
-                    {lang.name}
+                    <Image
+                      src={lang.flag || "/placeholder.svg"}
+                      alt={`${lang.code} flag`}
+                      width={20}
+                      height={14}
+                      className="rounded-sm"
+                    />
                   </DropdownMenuItem>
                 ))}
               </DropdownMenuContent>
@@ -92,9 +108,14 @@ export function Navbar() {
               <div className="px-3 py-2">
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
-                    <Button variant="ghost" size="sm" className="font-orbitron">
-                      <Globe className="h-4 w-4 mr-2" />
-                      {language.toUpperCase()}
+                    <Button variant="ghost" size="sm" className="p-2">
+                      <Image
+                        src={getCurrentFlag() || "/placeholder.svg"}
+                        alt={`${language} flag`}
+                        width={24}
+                        height={16}
+                        className="rounded-sm"
+                      />
                     </Button>
                   </DropdownMenuTrigger>
                   <DropdownMenuContent>
@@ -102,9 +123,15 @@ export function Navbar() {
                       <DropdownMenuItem
                         key={lang.code}
                         onClick={() => setLanguage(lang.code as any)}
-                        className={language === lang.code ? "bg-cyan-50" : ""}
+                        className={`flex items-center space-x-2 ${language === lang.code ? "bg-cyan-50" : ""}`}
                       >
-                        {lang.name}
+                        <Image
+                          src={lang.flag || "/placeholder.svg"}
+                          alt={`${lang.code} flag`}
+                          width={20}
+                          height={14}
+                          className="rounded-sm"
+                        />
                       </DropdownMenuItem>
                     ))}
                   </DropdownMenuContent>

@@ -5,6 +5,8 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Atom, Droplets, Layers, Zap } from "lucide-react"
+import Link from "next/link"
+import { ArrowRight } from "lucide-react"
 
 export default function ProductsPage() {
   const { t } = useLanguage()
@@ -94,25 +96,77 @@ export default function ProductsPage() {
         </div>
 
         {/* Applications Section */}
-        <div className="bg-gray-50 rounded-2xl p-12">
-          <h2 className="text-3xl font-bold font-orbitron text-center mb-8 gradient-text">Applications</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              "Electronics",
-              "Energy Storage",
-              "Composites",
-              "Coatings",
-              "Sensors",
-              "Biomedical",
-              "Automotive",
-              "Aerospace",
-            ].map((application, index) => (
-              <div key={index} className="text-center p-4 bg-white rounded-lg">
-                <h3 className="font-semibold font-orbitron text-gray-900">{application}</h3>
-              </div>
-            ))}
+        <section className="py-20 bg-gray-50">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl font-bold font-orbitron mb-6 gradient-text">Applications</h2>
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                Our graphene dispersions enable breakthrough solutions across multiple industries.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {[
+                {
+                  title: "Concrete, Mortars, Building Mixes",
+                  slug: "concrete-mortars-building-mixes",
+                },
+                {
+                  title: "Plastics, Polymers, Paints, Protective Coatings",
+                  slug: "plastics-polymers-paints-protective-coatings",
+                },
+                {
+                  title: "Powder Metallurgy and Metallurgy of Light and Non-Ferrous Alloys",
+                  slug: "powder-metallurgy-light-non-ferrous-alloys",
+                },
+                {
+                  title: "Energy Saving Technologies and New Ways of Electricity Production",
+                  slug: "energy-saving-technologies-electricity-production",
+                },
+                {
+                  title: "Environmental Protection",
+                  slug: "environmental-protection",
+                },
+                {
+                  title: "Composite Materials",
+                  slug: "composite-materials",
+                },
+                {
+                  title: "Wear-Resistant Rubber and Other Elastomers",
+                  slug: "wear-resistant-rubber-elastomers",
+                },
+                {
+                  title: "Lubricants, Technical Fluids",
+                  slug: "lubricants-technical-fluids",
+                },
+              ].map((application, index) => (
+                <Link key={index} href={`/applications/${application.slug}`}>
+                  <div className="bg-white rounded-lg p-6 text-center hover:shadow-lg transition-shadow cursor-pointer group h-32 flex items-center justify-center">
+                    <h3 className="font-semibold font-orbitron text-gray-900 group-hover:text-cyan-600 transition-colors text-sm leading-tight">
+                      {application.title}
+                    </h3>
+                  </div>
+                </Link>
+              ))}
+            </div>
+
+            <div className="text-center mt-12">
+              <Button
+                size="lg"
+                className="bg-cyan-600 hover:bg-cyan-700 text-white font-orbitron"
+                onClick={() => {
+                  const footer = document.querySelector("footer")
+                  if (footer) {
+                    footer.scrollIntoView({ behavior: "smooth" })
+                  }
+                }}
+              >
+                Discuss Your Application
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Button>
+            </div>
           </div>
-        </div>
+        </section>
       </div>
     </div>
   )
