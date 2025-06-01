@@ -1,6 +1,5 @@
 "use client"
 
-import { useEffect } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
@@ -12,31 +11,11 @@ export default function HomePage() {
   const { t } = useLanguage()
 
   const scrollToContact = () => {
-    try {
-      const footer = document.querySelector("footer")
-      if (footer) {
-        footer.scrollIntoView({ behavior: "smooth" })
-      }
-    } catch (error) {
-      console.error("Scroll to contact failed:", error)
+    const footer = document.querySelector("footer")
+    if (footer) {
+      footer.scrollIntoView({ behavior: "smooth" })
     }
   }
-
-  const scrollToTechnology = () => {
-    try {
-      const technologySection = document.getElementById("technology-section")
-      if (technologySection) {
-        technologySection.scrollIntoView({ behavior: "smooth" })
-      }
-    } catch (error) {
-      console.error("Scroll to technology failed:", error)
-    }
-  }
-
-  // Ensure DOM is ready before adding event listeners
-  useEffect(() => {
-    // Add any additional initialization if needed
-  }, [])
 
   const products = [
     {
@@ -118,14 +97,13 @@ export default function HomePage() {
               </h1>
               <p className="text-xl text-gray-600 mb-8 leading-relaxed">{t("heroSubtitle")}</p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                <Button
-                  size="lg"
-                  className="bg-cyan-600 hover:bg-cyan-700 text-white font-orbitron"
-                  onClick={scrollToTechnology}
+                <a
+                  href="#technology-section"
+                  className="inline-flex items-center justify-center px-6 py-3 text-lg font-orbitron bg-cyan-600 hover:bg-cyan-700 text-white rounded-md transition-colors no-underline"
                 >
                   {t("learnMore")}
                   <ArrowRight className="ml-2 h-5 w-5" />
-                </Button>
+                </a>
                 <Button
                   size="lg"
                   variant="outline"
