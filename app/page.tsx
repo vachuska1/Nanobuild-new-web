@@ -145,7 +145,7 @@ export default function HomePage() {
                 <div className="space-y-4">
                   <div className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow">
                     <Image
-                      src="/images/graphene-1.png"
+                      src="/images/Invitation.jpg"
                       alt="Graphene Structure"
                       width={300}
                       height={200}
@@ -156,7 +156,7 @@ export default function HomePage() {
                 <div className="space-y-4 mt-8">
                   <div className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow">
                     <Image
-                      src="/images/graphene-2.png"
+                      src="/images/Invitation_2.jpg"
                       alt="Graphene Lattice"
                       width={300}
                       height={200}
