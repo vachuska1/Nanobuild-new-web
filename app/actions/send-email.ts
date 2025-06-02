@@ -19,10 +19,11 @@ export async function sendContactEmail(formData: FormData) {
       }
     }
 
-    // Send email using Resend
+    // Send email using Resend with verified domain
     const { data, error } = await resend.emails.send({
-      from: "NANOBUILD Contact Form <onboarding@resend.dev>",
+      from: "NANOBUILD Contact Form <contact@nanobuild.cz>",
       to: ["nanobuildinfo@gmail.com"],
+      reply_to: email,
       subject: `New Contact Form Submission from ${firstName} ${lastName}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
