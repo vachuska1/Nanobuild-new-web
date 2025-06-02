@@ -21,7 +21,7 @@ export async function sendContactEmail(formData: FormData) {
 
     // Send email using Resend with verified domain
     const { data, error } = await resend.emails.send({
-      from: "NANOBUILD Contact Form <contact@nanobuild.cz>",
+      from: "NANOBUILD Contact Form <contact@nanobuild.info>",
       to: ["nanobuildinfo@gmail.com"],
       reply_to: email,
       subject: `New Contact Form Submission from ${firstName} ${lastName}`,
