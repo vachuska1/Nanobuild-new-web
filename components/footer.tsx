@@ -100,7 +100,7 @@ export function Footer() {
           {/* New Image */}
           <div className="w-full my-8">
             <img 
-              src="/images/newweb_icon.jpg" 
+              src="/images/czechinvest.jpg" 
               alt="NANOBUILD" 
               className="w-full h-auto object-cover rounded-lg"
             />
