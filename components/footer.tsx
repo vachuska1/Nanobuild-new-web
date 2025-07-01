@@ -97,7 +97,16 @@ export function Footer() {
             </div>
           </div>
 
-          <div className="mt-8 pt-8 border-t border-gray-800 text-center text-gray-400">
+          {/* New Image */}
+          <div className="w-full my-8">
+            <img 
+              src="/images/newweb_icon.jpg" 
+              alt="NANOBUILD" 
+              className="w-full h-auto object-cover rounded-lg"
+            />
+          </div>
+
+          <div className="pt-8 border-t border-gray-800 text-center text-gray-400">
             <p>&copy; 2025 NANOBUILD - {t("allRightsReserved")}</p>
           </div>
         </div>
