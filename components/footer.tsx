@@ -108,6 +108,7 @@ export function Footer() {
 
           <div className="pt-8 border-t border-gray-800 text-center text-gray-400">
             <p>&copy; 2025 NANOBUILD - {t("allRightsReserved")}</p>
+            <p className="mt-2 text-sm">Web vytvořil <a href="https://weblepe.cz" rel="nofollow" className="hover:underline">Weblépe.cz</a></p>
           </div>
         </div>
       </div>
